@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Flux Test</title>
+    <script type="text/javascript" src="js/underscore.js"></script>
+    <script type="text/javascript" src="js/backbone.js"></script>
+    <script type="text/javascript" src="js/react.js"></script>
+    <script type="text/javascript" src="js/jQuery.js"></script>
+    <script type="text/javascript" src="js/react-dom.js"></script>
+    <script type="text/javascript" src="js/flux.js"></script>
+    <script type="text/javascript" src="js/test.js"></script>
+  </head>
+  <body>
+    <div id="flux-test"></div>
+    <script type="text/javascript">
+      flux = new Flux();
+      createStores(flux);
+      createActions(flux);
+      ReactDOM.render(
+        React.createElement(ExampleComponent(flux), null),
+        document.getElementById('flux-test')
+      );
+    </script>
+  </body>
+</html>
