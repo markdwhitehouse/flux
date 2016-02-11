@@ -97,7 +97,7 @@ class Flux {
    *
    * *Example:*
    * ```javascript
-   * // Create a store with an event that listens for contextual data.
+   * // Create a store with an event that updates the internal state of store.
    * flux.createStore('MyStore', {
    *   initialize: function() {
    *     return {
@@ -138,10 +138,10 @@ class Flux {
    *   searchAccounts: flux.createTemplate(Flux.Ajax, {
    *     // Use the backbone model defined above.
    *     model: Accounts,
-   *     // Event hooks for applying additonal custom behavior.
+   *     // Event hooks for applying additional custom behavior.
    *     onInit: function() {},
    *     onSuccess: function(payload) {
-   *       // When request sucessfully completes, can perform custom logic.
+   *       // When request successfully completes, can perform custom logic.
    *       console.log(payload);
    *     },
    *     onFail: function(payload) {
@@ -163,7 +163,7 @@ class Flux {
    *
    * // The template state can then be retrieved in a React component.
    * React.createClass({
-   *   // Tells the compenont to which stores it should listen.
+   *   // Tells the component to which stores it should listen.
    *   mixins: [flux.setStores('MyStore')],
    *
    *   // We manage the state of the component. Parameter 'states' is an
@@ -179,7 +179,7 @@ class Flux {
    *   }
    * }
    * ```
-   * @param {Template} template A subclass of Template definining the logic of
+   * @param {Template} template A subclass of Template defining the logic of
    *                            the template.
    * @param {Object} definition Templates expose hooks that allow for
    *                            customization. See template for outline of
@@ -277,7 +277,7 @@ class Flux {
    * ```javascript
    * // Create React component and then set a store on the component.
    * React.createClass({
-   *   // Tells the compenont to which stores it should listen.
+   *   // Tells the component to which stores it should listen.
    *   mixins: [flux.setStores('MyStore')],
    *
    *   syncStores: function(states) {
@@ -287,7 +287,7 @@ class Flux {
    *   render: function() {
    *     ...
    *   }
-   * }
+   * });
    * ```
    * @param {Array.<string>} args A list of store names.
    * @return {Object.<string, Function>} Store hooks for react components.

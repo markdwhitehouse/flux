@@ -123,7 +123,7 @@ Entry point for creating a store.
 
 *Example:*
 ```javascript
-// Create a store with an event that listens for contextual data.
+// Create a store with an event that updates the internal state of store.
 flux.createStore('MyStore', {
   initialize: function() {
     return {
@@ -163,10 +163,10 @@ flux.createStore('MyStore', {
   searchAccounts: flux.createTemplate(Flux.Ajax, {
     // Use the backbone model defined above.
     model: Accounts,
-    // Event hooks for applying additonal custom behavior.
+    // Event hooks for applying additional custom behavior.
     onInit: function() {},
     onSuccess: function(payload) {
-      // When request sucessfully completes, can perform custom logic.
+      // When request successfully completes, can perform custom logic.
       console.log(payload);
     },
     onFail: function(payload) {
@@ -188,7 +188,7 @@ flux.createStore('MyStore', {
 
 // The template state can then be retrieved in a React component.
 React.createClass({
-  // Tells the compenont to which stores it should listen.
+  // Tells the component to which stores it should listen.
   mixins: [flux.setStores('MyStore')],
 
   // We manage the state of the component. Parameter 'states' is an
@@ -202,7 +202,7 @@ React.createClass({
   render: function() {
     return null;
   }
-}
+});
 ```
 
 **Kind**: instance method of <code>[Flux](#Flux)</code>  
@@ -210,7 +210,7 @@ React.createClass({
 
 | Param | Type | Description |
 | --- | --- | --- |
-| template | <code>Template</code> | A subclass of Template definining the logic of                            the template. |
+| template | <code>Template</code> | A subclass of Template defining the logic of                            the template. |
 | definition | <code>Object</code> | Templates expose hooks that allow for                            customization. See template for outline of                            available hooks. |
 
 <a name="Flux+dispatch"></a>
@@ -254,7 +254,7 @@ Retrieves the state of a store by name.
 // Create a store.
 flux.createStore('MyStore', {
   // Access another store and use that data in this store.
-  copyValue() {
+  copyValue: function() {
     var copy = flux.getStore('SecondaryStore').secondaryValue;
     ...
   }
@@ -278,14 +278,14 @@ Helper method for stores used for filtering dispatches by context.
 flux.createStore('MyStore', {
   update: flux.listenTo({mode: 'addition'}, function(payload) {
     // Add 'payload' to some state value.
-  });
+  })
 });
 
 // Create a custom action that invokes a dispatch with contextual data.
 flux.createActions('MyActions', function() {
   add: flux.actionWithContext('update', {mode: 'addition'}, function() {
     return 5;
-  });
+  })
 });
 ```
 
@@ -306,7 +306,7 @@ returning React mixin that's added to the component.
 ```javascript
 // Create React component and then set a store on the component.
 React.createClass({
-  // Tells the compenont to which stores it should listen.
+  // Tells the component to which stores it should listen.
   mixins: [flux.setStores('MyStore')],
 
   syncStores: function(states) {
@@ -316,7 +316,7 @@ React.createClass({
   render: function() {
     ...
   }
-}
+});
 ```
 
 **Kind**: instance method of <code>[Flux](#Flux)</code>  
