@@ -25,11 +25,11 @@ class Flux {
    * an action group or store name.
    *
    * *Example:*
-   * ```
-   * Create a store.
+   * ```javascript
+   * // Create a store.
    * flux.createStore('MyStore', { increment: function() {} });
    *
-   * Access actions from that store.
+   * // Access actions from that store.
    * flux.actions('MyStore').increment();
    * ```
    * @param {string} qualifier Either or an action group or store name.
@@ -45,7 +45,7 @@ class Flux {
    * when an action executes.
    *
    * *Example:*
-   * ```
+   * ```javascript
    * // Create a store with an event that listens for contextual data.
    * flux.createStore('MyStore', {
    *   update: flux.listenTo({mode: 'addition'}, function(payload) {
@@ -74,7 +74,7 @@ class Flux {
    * Entry point for creating a group of actions.
    *
    * *Example:*
-   * ```
+   * ```javascript
    * // Create a custom action.
    * flux.createActions('MyActions', function() {
    *   addValue: function(payload) {
@@ -96,7 +96,7 @@ class Flux {
    * Entry point for creating a store.
    *
    * *Example:*
-   * ```
+   * ```javascript
    * // Create a store with an event that listens for contextual data.
    * flux.createStore('MyStore', {
    *   initialize: function() {
@@ -124,7 +124,7 @@ class Flux {
    * behavior by applying custom logic to an event.
    *
    * *Example:*
-   * ```
+   * ```javascript
    * // Create backbone model that Flux.Ajax can utilize for making web requests.
    * var Accounts = Backbone.Model.extend({
    *   setUrl: function() {
@@ -193,7 +193,7 @@ class Flux {
   /** Dispatch an event from an action that stores listen to and consume.
     *
     * *Example:*
-    * ```
+    * ```javascript
     * // Create a custom action and then use 'this.dispatch' to asynchronously
     * // invoke a custom action.
     * flux.createActions('MyActions', function() {
@@ -223,7 +223,7 @@ class Flux {
    * Retrieves the state of a store by name.
    *
    * *Example:*
-   * ```
+   * ```javascript
    * // Create a store.
    * flux.createStore('MyStore', {
    *   // Access another store and use that data in this store.
@@ -244,7 +244,7 @@ class Flux {
    * Helper method for stores used for filtering dispatches by context.
    *
    * *Example:*
-   * ```
+   * ```javascript
    * // Create a store with an event that listens for contextual data.
    * flux.createStore('MyStore', {
    *   update: flux.listenTo({mode: 'addition'}, function(payload) {
@@ -274,7 +274,7 @@ class Flux {
    * returning React mixin that's added to the component.
    *
    * *Example:*
-   * ```
+   * ```javascript
    * // Create React component and then set a store on the component.
    * React.createClass({
    *   // Tells the compenont to which stores it should listen.
